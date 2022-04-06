@@ -9,7 +9,7 @@ const placeSchema = mongoose.Schema({
 	prize_level: { type: String, required: true },
 	ranking: { type: String },
 	rating: { type: String },
-	liked: { type: Boolean },
+	isliked: { type: Boolean },
 });
 
 var Place = mongoose.model('Place', placeSchema);

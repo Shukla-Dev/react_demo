@@ -19,8 +19,6 @@ const bookTable = async () => {
 		return item.email;
 	});
 
-	console.log(emails);
-
 	var mailOptions = {
 		from: 'ifour.shukla@gmail.com',
 		to: emails,

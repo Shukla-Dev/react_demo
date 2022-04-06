@@ -1,9 +1,9 @@
 import express from 'express';
-import { savePost } from '../controllers/places.js';
-import auth from '../middleware/auth.js';
+import { getPlaces, savePlace } from '../controllers/places.js';
 
 const router = express.Router();
 
-router.post('/', auth, savePost);
+router.post('/save', savePlace);
+router.get('/savedplaces', getPlaces);
 
 export default router;

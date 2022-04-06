@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import {
 	Box,
 	Typography,
@@ -10,6 +10,7 @@ import {
 	Chip,
 	CardContent,
 } from '@material-ui/core';
+import { saveplace } from '../../actions/place';
 import {
 	LocationOn,
 	FavoriteBorder,
@@ -17,11 +18,33 @@ import {
 	FavoriteBorderOutlined,
 } from '@material-ui/icons';
 import { Phone } from '@material-ui/icons';
+import { useDispatch } from 'react-redux';
 import { Rating } from '@material-ui/lab';
 import useStyles from './styles';
 
 const PlaceDetails = ({ place, selected, refProp }) => {
 	const classes = useStyles();
+
+	const dispatch = useDispatch();
+
+	const [placeData, setPlaceData] = useState({
+		name: place?.name,
+		awards: place.awards,
+		category: place?.category,
+		cuisine: place?.cuisine,
+		photo: place?.photo,
+		prize_level: place?.price_level,
+		ranking: place?.ranking,
+		rating: place.rating,
+		isliked: false,
+	});
+
+	const [isClicked, setIsClicked] = useState(false);
+
+	const handleSubmit = () => {
+		dispatch(saveplace(placeData));
+		setIsClicked(() => !isClicked);
+	};
 
 	if (selected) {
 		refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -44,8 +67,12 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 						{place.name}
 					</Typography>
 					<CardActions>
-						<Button>
-							<Favorite />
+						<Button onClick={handleSubmit}>
+							{isClicked ? (
+								<Favorite color="secondary" />
+							) : (
+								<FavoriteBorderOutlined />
+							)}
 						</Button>
 					</CardActions>
 				</Box>
@@ -109,12 +136,14 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 				)}
 				<CardActions>
 					<Button
-						size="small"
-						color="primary"
-						onClick={() => window.open(place.web_url, '_blank')}
+						size="medium"
+						color="secondary"
+						component={Link}
+						to="/reservation"
+						variant="contained"
 					>
 						{' '}
-						Book a
+						Book Table
 					</Button>
 					<Button
 						size="small"

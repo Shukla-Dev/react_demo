@@ -5,6 +5,7 @@ import placeRoutes from './routes/places.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bookTable from './helper/bookTable.js';
+import reservationRoutes from './routes/reservation.js';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use('/user', userRoutes);
 // bookTable();
 
 app.use('/place', placeRoutes);
+app.use('/user', reservationRoutes);
 
 const PORT = 5000;
 

@@ -2,17 +2,14 @@ import axios from 'axios';
 
 const API = axios.create({ baseURL: 'http://localhost:5000' });
 
-API.interceptors.request.use((req) => {
-	if (localStorage.getItem('profile')) {
-		req.headers.Authorization = `Bearer ${JSON.parse(
-			localStorage.getItem('profile').token
-		)}`;
-	}
-	return req;
-});
-
 export const signIn = (FormData) => API.post('/user/signin', FormData);
 export const signUp = (FormData) => API.post('/user/signup', FormData);
+
+export const reservation = (ReservationData) =>
+	API.post('/user/reservation', ReservationData);
+
+export const saveplace = (PlaceData) => API.post('/place/save', PlaceData);
+export const getplaces = () => API.get('/place/savedplaces');
 
 export const getPlacesData = async (type, sw, ne) => {
 	try {
