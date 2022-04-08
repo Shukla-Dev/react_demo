@@ -1,4 +1,4 @@
-import { SAVE } from '../Constants/actionTypes';
+import { SAVE, FETCH_ALL, DELETE } from '../Constants/actionTypes';
 
 const savePlaceReducer = (state = { placeData: [] }, action) => {
 	switch (action.type) {
@@ -7,6 +7,10 @@ const savePlaceReducer = (state = { placeData: [] }, action) => {
 
 		case FETCH_ALL:
 			return action.payload;
+
+		case DELETE:
+			// console.log('state', );
+			return state.filter((place) => place._id !== action.payload);
 
 		default:
 			return state;

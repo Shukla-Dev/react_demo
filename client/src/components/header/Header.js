@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router';
 
 import useStyles from './styles';
+import { Favorite } from '@material-ui/icons';
 
 const Header = ({ setCoords, isDesktop }) => {
 	const classes = useStyles();
@@ -57,6 +58,14 @@ const Header = ({ setCoords, isDesktop }) => {
 				<Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
 					<Typography variant="h5" className={classes.title}>
 						Traveller
+					</Typography>
+				</Link>
+				<Link
+					to="/savedplaces"
+					style={{ textDecoration: 'none', color: 'white' }}
+				>
+					<Typography variant="h5" className={classes.title}>
+						<Favorite />
 					</Typography>
 				</Link>
 				<Box display="flex">

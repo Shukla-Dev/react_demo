@@ -10,6 +10,7 @@ const placeSchema = mongoose.Schema({
 	ranking: { type: String },
 	rating: { type: String },
 	isliked: { type: Boolean },
+	creator: { type: String, required: true },
 });
 
 var Place = mongoose.model('Place', placeSchema);

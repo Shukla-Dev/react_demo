@@ -1,4 +1,4 @@
-import { AUTH, RESERVATION } from '../Constants/actionTypes';
+import { AUTH, RESERVATION, FETCH } from '../Constants/actionTypes';
 import * as API from '../API/index';
 
 export const signin = (formData, navigate) => async (dispatch) => {
@@ -30,7 +30,18 @@ export const reservation = (reservationData) => async (dispatch) => {
 	try {
 		const { data } = await API.reservation(reservationData);
 
-		dispatch({ type: RESERVATION, data });
+		dispatch({ type: RESERVATION, payload: data });
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const getreservation = () => async (dispatch) => {
+	try {
+		const { data } = await API.getreservation();
+		console.log('BE data', data);
+
+		dispatch({ type: FETCH, payload: data });
 	} catch (error) {
 		console.log(error);
 	}

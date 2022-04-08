@@ -27,6 +27,8 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 
 	const dispatch = useDispatch();
 
+	const user = JSON.parse(localStorage.getItem('profile'));
+
 	const [placeData, setPlaceData] = useState({
 		name: place?.name,
 		awards: place.awards,
@@ -37,7 +39,10 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 		ranking: place?.ranking,
 		rating: place.rating,
 		isliked: false,
+		creator: user?.result?.email,
 	});
+
+	console.log(user?.result?.email);
 
 	const [isClicked, setIsClicked] = useState(false);
 

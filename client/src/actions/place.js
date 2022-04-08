@@ -1,4 +1,4 @@
-import { SAVE, FETCH_ALL } from '../Constants/actionTypes';
+import { SAVE, FETCH_ALL, DELETE } from '../Constants/actionTypes';
 import * as API from '../API/index';
 
 export const saveplace = (placeData) => async (dispatch) => {
@@ -17,6 +17,16 @@ export const getplaces = () => async (dispatch) => {
 		console.log('BE data', data);
 
 		dispatch({ type: FETCH_ALL, payload: data });
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const deleteplace = (id) => async (dispatch) => {
+	try {
+		await API.deleteplace(id);
+
+		dispatch({ type: DELETE, payload: id });
 	} catch (error) {
 		console.log(error);
 	}

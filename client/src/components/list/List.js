@@ -35,7 +35,9 @@ const List = ({
 
 	console.log(type);
 
-	return (
+	const user = JSON.parse(localStorage.getItem('profile'));
+
+	return user ? (
 		<div className={classes.container}>
 			<Typography variant="h4">
 				Restaurant, Hotels and Attractions around you
@@ -82,6 +84,10 @@ const List = ({
 					</Grid>
 				</>
 			)}
+		</div>
+	) : (
+		<div className={classes.container}>
+			<Typography variant="h4">To View & Booking Please Sign In</Typography>
 		</div>
 	);
 };

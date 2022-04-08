@@ -8,8 +8,11 @@ export const signUp = (FormData) => API.post('/user/signup', FormData);
 export const reservation = (ReservationData) =>
 	API.post('/user/reservation', ReservationData);
 
+export const getreservation = () => API.get('/user/reservations');
+
 export const saveplace = (PlaceData) => API.post('/place/save', PlaceData);
 export const getplaces = () => API.get('/place/savedplaces');
+export const deleteplace = (id) => API.delete(`/place/${id}`);
 
 export const getPlacesData = async (type, sw, ne) => {
 	try {

@@ -1,12 +1,16 @@
-import { RESERVATION } from '../Constants/actionTypes';
+import { FETCH, RESERVATION } from '../Constants/actionTypes';
 
-const reservationReducer = (state = { reservationData: null }, action) => {
+const reservationReducer = (reservationData = [], action) => {
 	switch (action.type) {
 		case RESERVATION:
-			return [...state, action.payload];
+			console.log('type here book');
+			return [...reservationData, action.payload];
+
+		case FETCH:
+			return action.payload;
 
 		default:
-			return state;
+			return reservationData;
 	}
 };
 

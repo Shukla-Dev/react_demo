@@ -1,12 +1,12 @@
-import Mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import googleEvent from '../helper/events.js';
 import Reservation from '../models/reservation.js';
 
 export const reservation = async (req, res) => {
-	const reservation = req.body;
+	const reservations = req.body;
 
 	const newReservation = new Reservation({
-		...reservation,
+		...reservations,
 		customer: req.userId,
 		reservedAt: new Date().toISOString(),
 	});
@@ -16,6 +16,18 @@ export const reservation = async (req, res) => {
 		res.status(201).json(newReservation);
 		googleEvent(req.body);
 	} catch (error) {
-		res.status(409).json({ message: error.message });
+		res.status(409).json(error);
+	}
+};
+
+export const reservations = async (req, res) => {
+	try {
+		const reservations = await Reservation.find().sort({
+			_id: -1,
+		});
+
+		res.status(200).json(reservations);
+	} catch (error) {
+		res.status(404).json(error);
 	}
 };

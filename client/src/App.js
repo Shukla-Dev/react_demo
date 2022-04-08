@@ -7,6 +7,7 @@ import Reservation from './components/Reservation/Reservation';
 import { useSelector } from 'react-redux';
 import { getplaces } from './actions/place';
 import { useDispatch } from 'react-redux';
+import SavedPlaces from './components/Reservation/savedplaces.js/SavedPlaces';
 
 const App = () => {
 	const [coords, setCoords] = useState({});
@@ -15,10 +16,6 @@ const App = () => {
 	useEffect(() => {
 		dispatch(getplaces());
 	}, [dispatch]);
-
-	const savedplaces = useSelector((state) => state.placeData);
-
-	console.log('test', savedplaces);
 
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(
@@ -38,6 +35,7 @@ const App = () => {
 				/>
 				<Route path="/auth" element={<Auth />} />
 				<Route path="/reservation" element={<Reservation />} />
+				<Route path="/savedplaces" element={<SavedPlaces />} />
 			</Routes>
 		</>
 	);

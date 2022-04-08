@@ -9,16 +9,26 @@ export const savePlace = async (req, res) => {
 
 		res.status(201).json(savePlace);
 	} catch (error) {
-		res.status(409).json({ message: error.message });
+		res.status(409).json(error);
 	}
 };
 
 export const getPlaces = async (req, res) => {
 	try {
-		const places = await Place.find().sort({ _id: -1 });
+		const places = await Place.find().sort({
+			_id: -1,
+		});
 
 		res.status(200).json(places);
 	} catch (error) {
 		res.status(404).json({ message: error.message });
 	}
+};
+
+export const deletePlace = async (req, res) => {
+	const { id } = req.params;
+
+	await Place.findByIdAndRemove(id);
+
+	res.json({ message: 'place unsaved' });
 };
