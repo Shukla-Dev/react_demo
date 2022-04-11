@@ -5,7 +5,7 @@ export const saveplace = (placeData) => async (dispatch) => {
 	try {
 		const { data } = await API.saveplace(placeData);
 
-		dispatch({ type: SAVE, data });
+		dispatch({ type: SAVE, payload: data });
 	} catch (error) {
 		console.log(error);
 	}
@@ -14,7 +14,7 @@ export const saveplace = (placeData) => async (dispatch) => {
 export const getplaces = () => async (dispatch) => {
 	try {
 		const { data } = await API.getplaces();
-		console.log('BE data', data);
+		// console.log('BE data', data);
 
 		dispatch({ type: FETCH_ALL, payload: data });
 	} catch (error) {

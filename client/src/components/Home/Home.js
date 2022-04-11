@@ -32,7 +32,7 @@ const Home = ({ coords, setCoords }) => {
 		console.log(coords, bounds);
 		getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
 			if (bounds.sw && bounds.ne) {
-				console.log('data is ', data);
+				// console.log('data is ', data);
 				setFilteredPlaces([]);
 				setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
 				setIsLoading(false);

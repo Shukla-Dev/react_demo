@@ -1,10 +1,14 @@
 import express from 'express';
-import { reservation, reservations } from '../controllers/reservation.js';
-import auth from '../middleware/auth.js';
+import {
+	deleteReservation,
+	reservation,
+	reservations,
+} from '../controllers/reservation.js';
 
 const router = express.Router();
 
 router.post('/reservation', reservation);
 router.get('/reservations', reservations);
+router.delete('/:id', deleteReservation);
 
 export default router;

@@ -9,7 +9,6 @@ const savePlaceReducer = (state = { placeData: [] }, action) => {
 			return action.payload;
 
 		case DELETE:
-			// console.log('state', );
 			return state.filter((place) => place._id !== action.payload);
 
 		default:

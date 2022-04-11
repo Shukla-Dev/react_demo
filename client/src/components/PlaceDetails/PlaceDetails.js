@@ -42,7 +42,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 		creator: user?.result?.email,
 	});
 
-	console.log(user?.result?.email);
+	// console.log(user?.result?.email);
 
 	const [isClicked, setIsClicked] = useState(false);
 
@@ -56,7 +56,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 	}
 
 	return (
-		<Card elevation={6}>
+		<Card elevation={6} style={{ borderRadius: 20 }}>
 			<CardMedia
 				style={{ height: 300 }}
 				image={

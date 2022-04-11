@@ -33,7 +33,7 @@ const Header = ({ setCoords, isDesktop }) => {
 		setUser(null);
 	};
 
-	console.log('user is ', user);
+	// console.log('user is ', user);
 
 	useEffect(() => {
 		const token = user?.token;
@@ -99,7 +99,7 @@ const Header = ({ setCoords, isDesktop }) => {
 								</div>
 							</Autocomplete>
 
-							<Button variant="contained" onClick={logOut}>
+							<Button variant="contained" onClick={logOut} size="small">
 								Logout
 							</Button>
 						</>

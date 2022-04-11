@@ -22,7 +22,7 @@ const List = ({
 }) => {
 	const classes = useStyles();
 
-	console.log({ childClicked });
+	// console.log({ childClicked });
 
 	const [elRefs, setElRefs] = useState([]);
 
@@ -33,7 +33,7 @@ const List = ({
 		setElRefs(refs);
 	}, [places]);
 
-	console.log(type);
+	// console.log(type);
 
 	const user = JSON.parse(localStorage.getItem('profile'));
 

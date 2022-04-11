@@ -34,7 +34,7 @@ const Map = ({
 				}}
 				onChildClick={(child) => {
 					setChildClicked(child);
-					console.log('child is ', child);
+					// console.log('child is ', child);
 				}}
 			>
 				{places?.length &&

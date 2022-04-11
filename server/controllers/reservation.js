@@ -31,3 +31,14 @@ export const reservations = async (req, res) => {
 		res.status(404).json(error);
 	}
 };
+
+export const deleteReservation = async (req, res) => {
+	const { id } = req.params;
+
+	if (!mongoose.Types.ObjectId.isValid(id))
+		return res.status(404).send('no reservation with that id');
+
+	await Reservation.findByIdAndRemove(id);
+
+	res.json({ message: 'reservation deleted successfully' });
+};

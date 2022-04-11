@@ -13,20 +13,15 @@ import {
 	Grid,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import {
-	LocationOn,
-	FavoriteBorder,
-	Favorite,
-	FavoriteBorderOutlined,
-} from '@material-ui/icons';
+import { LocationOn, Favorite } from '@material-ui/icons';
 import { Phone } from '@material-ui/icons';
 import { Rating } from '@material-ui/lab';
 import { useDispatch } from 'react-redux';
-import { deleteplace } from '../../../../actions/place';
+import { deleteplace } from '../../../actions/place';
 
 const SavedPlace = (data) => {
 	// const { name } = data;
-	console.log(data.data.name);
+	// console.log(data.data.name);
 
 	const dispatch = useDispatch();
 
