@@ -1,15 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
-	mainContainer: {
-		display: 'flex',
-		alignItems: 'center',
-		width: 'auto',
-	},
-	smMargin: {
-		margin: theme.spacing(1),
-	},
-	actionDiv: {
-		textAlign: 'center',
+	pagination: {
+		borderRadius: 15,
+		marginTop: 100,
+		padding: '16px',
+		alignItems: 'start',
 	},
 }));

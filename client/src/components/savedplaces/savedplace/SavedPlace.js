@@ -20,8 +20,9 @@ import { useDispatch } from 'react-redux';
 import { deleteplace } from '../../../actions/place';
 
 const SavedPlace = (data) => {
-	// const { name } = data;
-	// console.log(data.data.name);
+	const handleClick = () => {
+		console.log('data', data.data);
+	};
 
 	const dispatch = useDispatch();
 
@@ -120,6 +121,7 @@ const SavedPlace = (data) => {
 							component={Link}
 							to="/reservation"
 							variant="contained"
+							onClick={handleClick}
 						>
 							{' '}
 							Book Table

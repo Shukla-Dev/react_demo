@@ -1,4 +1,4 @@
-import { SAVE, FETCH_ALL, DELETE } from '../Constants/actionTypes';
+import { SAVE, FETCH_ALL, DELETE, FETCH_DATA } from '../Constants/actionTypes';
 
 const savePlaceReducer = (state = { placeData: [] }, action) => {
 	switch (action.type) {

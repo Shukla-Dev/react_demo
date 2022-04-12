@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Home from './components/Home/Home';
 import { Routes, Route } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import Auth from './components/Auth/Auth';
 import Header from './components/header/Header';
 import Reservation from './components/Reservation/Reservation';
@@ -20,9 +21,6 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(getplaces());
-	}, []);
-
-	useEffect(() => {
 		dispatch(getreservation());
 	}, []);
 

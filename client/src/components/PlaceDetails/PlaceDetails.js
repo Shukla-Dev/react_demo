@@ -10,7 +10,7 @@ import {
 	Chip,
 	CardContent,
 } from '@material-ui/core';
-import { saveplace } from '../../actions/place';
+import { getplaceData, saveplace } from '../../actions/place';
 import {
 	LocationOn,
 	FavoriteBorder,
@@ -21,8 +21,9 @@ import { Phone } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
 import { Rating } from '@material-ui/lab';
 import useStyles from './styles';
+import Reservation from '../Reservation/Reservation';
 
-const PlaceDetails = ({ place, selected, refProp }) => {
+const PlaceDetails = ({ place, selected, refProp, type }) => {
 	const classes = useStyles();
 
 	const dispatch = useDispatch();
@@ -46,7 +47,13 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 
 	const [isClicked, setIsClicked] = useState(false);
 
+	const handleClick = () => {
+		console.log(placeData);
+		localStorage.setItem('placeData', JSON.stringify({ ...placeData }));
+	};
+
 	const handleSubmit = () => {
+		console.log('t', placeData);
 		dispatch(saveplace(placeData));
 		setIsClicked(() => !isClicked);
 	};
@@ -146,9 +153,10 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 						component={Link}
 						to="/reservation"
 						variant="contained"
+						onClick={handleClick}
 					>
 						{' '}
-						Book Table
+						Book {type === 'restaurants' ? 'Table' : 'Room'}
 					</Button>
 					<Button
 						size="small"
