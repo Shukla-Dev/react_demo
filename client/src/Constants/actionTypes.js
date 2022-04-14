@@ -13,3 +13,5 @@ export const FETCH = 'FETCH';
 export const DELETE = 'DELETE';
 
 export const FETCH_DATA = 'FETCH_DATA';
+
+export const DELETERES = 'DELETERES';

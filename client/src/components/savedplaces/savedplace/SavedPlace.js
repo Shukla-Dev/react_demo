@@ -21,7 +21,8 @@ import { deleteplace } from '../../../actions/place';
 
 const SavedPlace = (data) => {
 	const handleClick = () => {
-		console.log('data', data.data);
+		console.log(data);
+		localStorage.setItem('placeData', JSON.stringify({ ...data }));
 	};
 
 	const dispatch = useDispatch();

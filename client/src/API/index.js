@@ -9,6 +9,7 @@ export const reservation = (ReservationData) =>
 	API.post('/user/reservation', ReservationData);
 
 export const getreservation = () => API.get('/user/reservations');
+export const deletereservation = (id) => API.delete(`/user/${id}`);
 
 export const saveplace = (PlaceData) => API.post('/place/save', PlaceData);
 export const getplaces = () => API.get('/place/savedplaces');

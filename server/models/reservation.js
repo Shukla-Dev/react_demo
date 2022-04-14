@@ -6,8 +6,9 @@ const reservationSchema = mongoose.Schema({
 	person: { type: Number, required: true },
 	startDate: { type: String, required: true },
 	endDate: { type: String },
-	customer: { type: String, required: true },
 	reservedAt: { type: Date, default: Date.now() },
+	timing: { type: String, required: true },
+	placeData: { type: Object },
 });
 
 var Reservation = mongoose.model('Reservation', reservationSchema);

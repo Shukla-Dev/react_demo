@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Grid, Typography } from '@material-ui/core';
-import SavedPlace from './savedplace/SavedPlace';
+import Booking from './Booking/Booking';
 
-const SavedPlaces = () => {
+const Bookings = () => {
 	const [data, setData] = useState([]);
-	const savedplaces = useSelector((state) => state.savePlace);
+	const bookings = useSelector((state) => state.reservation);
+	console.log(bookings);
+
 	const user = JSON.parse(localStorage.getItem('profile'));
 
-	return savedplaces.length > 0 ? (
+	return bookings.length > 0 ? (
 		<div>
 			<Typography variant="h4" style={{ marginTop: '70px' }}>
-				Saved Places
+				Bookings
 			</Typography>
 			<Grid
 				container
@@ -19,17 +21,17 @@ const SavedPlaces = () => {
 				maxWidth="80%"
 				style={{ marginTop: '10px', paddingLeft: 50 }}
 			>
-				{savedplaces.map((item, index) => {
-					if (item.creator === user?.result?.email)
-						return <SavedPlace data={item} key={index} />;
+				{bookings.map((item, index) => {
+					if (item.email === user?.result?.email)
+						return <Booking data={item} key={index} />;
 				})}
 			</Grid>
 		</div>
 	) : (
 		<Typography variant="h4" style={{ marginTop: '80px' }}>
-			you do not have a savedPlaces ...
+			you have no bookings
 		</Typography>
 	);
 };
 
-export default SavedPlaces;
+export default Bookings;

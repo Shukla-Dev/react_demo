@@ -1,4 +1,4 @@
-import { FETCH, RESERVATION } from '../Constants/actionTypes';
+import { DELETERES, FETCH, RESERVATION } from '../Constants/actionTypes';
 
 const reservationReducer = (reservationData = [], action) => {
 	switch (action.type) {
@@ -8,6 +8,11 @@ const reservationReducer = (reservationData = [], action) => {
 
 		case FETCH:
 			return action.payload;
+
+		case DELETERES:
+			return reservationData.filter(
+				(reservation) => reservation._id !== action.payload
+			);
 
 		default:
 			return reservationData;

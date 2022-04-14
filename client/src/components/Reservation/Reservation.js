@@ -14,14 +14,6 @@ import { reservation } from '../../actions/auth';
 
 import UseStyles from './styles';
 
-const initialState = {
-	fullName: '',
-	email: '',
-	person: '',
-	startDate: '',
-	endDate: '',
-};
-
 const Reservation = () => {
 	const classes = UseStyles();
 	const dispatch = useDispatch();
@@ -30,7 +22,15 @@ const Reservation = () => {
 
 	console.log(placeData);
 
-	const [reservationData, setReservationData] = useState(initialState);
+	const [reservationData, setReservationData] = useState({
+		fullName: '',
+		email: '',
+		person: '',
+		startDate: '',
+		endDate: '',
+		timing: '',
+		placeData: placeData.data,
+	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -53,9 +53,10 @@ const Reservation = () => {
 					variant="h5"
 					style={{ textAlign: 'start', marginTop: 10, color: '#f50057' }}
 				>
-					{placeData.category.name} : {placeData.name}
+					{/* {placeData.category.name} : {placeData.name} ||{' '} */}
+					{placeData.data.category.name} : {placeData.data.name}
 				</Typography>
-
+				{/* <img src={placeData.photo.images.small} /> */}
 				<form className={classes.form} onSubmit={handleSubmit}>
 					<Grid container spacing={3}>
 						<Input
@@ -77,6 +78,7 @@ const Reservation = () => {
 							label="Number of Person"
 							handleChange={handleChange}
 						/>
+
 						<InputLabel className={classes.startlabel}>Start Date</InputLabel>
 						<TextField
 							type="date"
@@ -91,6 +93,18 @@ const Reservation = () => {
 							name="endDate"
 							className={classes.endDate}
 							minDate={new Date()}
+							onChange={handleChange}
+						/>
+						<br />
+					</Grid>
+					<Grid container spacing={3} style={{ marginTop: '20px' }}>
+						<InputLabel style={{ marginLeft: '10px', marginTop: '8px' }}>
+							Time
+						</InputLabel>
+						<TextField
+							type="time"
+							name="timing"
+							className={classes.endDate}
 							onChange={handleChange}
 						/>
 					</Grid>

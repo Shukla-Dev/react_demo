@@ -7,7 +7,6 @@ export const reservation = async (req, res) => {
 
 	const newReservation = new Reservation({
 		...reservations,
-		customer: req.userId,
 		reservedAt: new Date().toISOString(),
 	});
 	try {

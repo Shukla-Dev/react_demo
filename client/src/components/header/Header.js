@@ -68,6 +68,11 @@ const Header = ({ setCoords, isDesktop }) => {
 						<Favorite />
 					</Typography>
 				</Link>
+				<Link to="/bookings" style={{ textDecoration: 'none', color: 'white' }}>
+					<Typography variant="h5" className={classes.title}>
+						Bookings
+					</Typography>
+				</Link>
 				<Box display="flex">
 					{user ? (
 						<>
